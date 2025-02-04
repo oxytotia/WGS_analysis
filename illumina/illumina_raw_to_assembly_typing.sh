@@ -263,11 +263,11 @@ determine_organism() {
 
 
 		# copy all results.txt (detected organisms) to 1 folder 
-	mkdir -p $output_dir/03_kmerfinder/results_all
+	mkdir -p $output_dir/03_kmerfinder/01_results_all
 	
 	for folder in $output_dir/03_kmerfinder/*; do 
 		folder_name=$(basename $folder)
-		cp "$folder/results.txt" "$output_dir/03_kmerfinder/results_all/${folder_name/_R1_R2/}_kmerfinder.txt"
+		cp "$folder/results.txt" "$output_dir/03_kmerfinder/01_results_all/${folder_name/_R1_R2/}_kmerfinder.txt"
 	done
 
 		
@@ -276,7 +276,7 @@ determine_organism() {
 	echo -e "Sample\tSpecies\tNCBI assembly accession\tQuery Coverage\tp value" > $output_dir/03_kmerfinder/${run_name}_kmerfinder_species_summary.txt
 
 
-	for i in $output_dir/03_kmerfinder/results_all/*_kmerfinder.txt; do	
+	for i in $output_dir/03_kmerfinder/01_results_all/*_kmerfinder.txt; do	
 		
 		awk -v samplename=$(basename $i _kmerfinder.txt) 'NR>1 {print samplename "\t" $(NF-1) " " $NF "\t" $1 "\t" $6 "\t" $13}' "$i" >> $output_dir/03_kmerfinder/${run_name}_kmerfinder_species_summary.txt
 			
