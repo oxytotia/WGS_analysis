@@ -1,1 +1,8 @@
+This repository contains a comprehensive Whole Genome Sequencing (WGS) pipeline for processing Illumina sequencing data:
 
+  1. Preprocessing & Quality Control
+• FastQC: Quality assessment of raw reads
+• MultiQC: Aggregates FastQC results into a single report
+
+  2. Read Trimming & Filtering
+• Trimmomatic: Removes low-quality reads and adapters (sliding window can be adjusted - default: 4:20)
