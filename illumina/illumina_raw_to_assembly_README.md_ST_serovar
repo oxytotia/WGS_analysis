@@ -10,3 +10,6 @@ The pipeline is designed for automated high-throughput bacterial genome analysis
   2. Organism Identification
 • KmerFinder: Identify species from raw reads
 
+  3. Genome Assembly
+• SPAdes: De novo genome assembly
+
