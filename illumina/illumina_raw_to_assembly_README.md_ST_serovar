@@ -13,3 +13,20 @@ The pipeline is designed for automated high-throughput bacterial genome analysis
   3. Genome Assembly
 • SPAdes: De novo genome assembly
 
+  4. Assembly Quality Assessment
+• QUAST: Evaluate assembly quality
+• BUSCO: Assess genome completeness
+
+  5. Read Mapping & Coverage
+• Minimap2 & Samtools: Map reads to assemblies and calculate coverage
+
+  6. Typing & Serotyping
+• MLST: Multi-locus sequence typing (ST determination)
+• SISTR: Serovar identification for Salmonella
+
+  7. Merging Reports & Summary Generation
+• Python script: Merges QC and typing results into a structured Excel (.xlsx) summary
+
+Installation & Dependencies
+
+
