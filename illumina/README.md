@@ -41,6 +41,9 @@ To run this pipeline, you need:
 
 To install required environments:
 
+> [!NOTE]  
+> The env names listed below are directly referenced in the script - if the env names differ, the user must alter the script accordingly.
+
 ```bash
     # Activate conda base
 source ~/anaconda3/etc/profile.d/conda.sh
