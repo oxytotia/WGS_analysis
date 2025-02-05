@@ -34,7 +34,7 @@ To run this pipeline, you need:
   - `Minimap2`, `Samtools`
   - `MLST`
   - `SISTR`
-- **Python 3** (for report merging)
+- **Python 3** (for report creation)
   - make sure that `openpyxl` module is installed 
 
 
