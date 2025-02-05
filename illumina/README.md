@@ -24,6 +24,8 @@ A comprehensive Whole Genome Sequencing (WGS) pipeline for processing Illumina s
 To run this pipeline, you need:
 - **Linux OS** (`Ubuntu` or `HPC cluster`)
 - **Conda** (for managing dependencies)
+- **Python 3** (for report merging)
+
 - **Required tools installed in Conda environments:**
   - `FastQC`, `MultiQC`
   - `Trimmomatic`
@@ -34,9 +36,6 @@ To run this pipeline, you need:
   - `Minimap2`, `Samtools`
   - `MLST`
   - `SISTR`
-- **Python 3** (for report creation)
-  - make sure that `openpyxl` module is installed 
-
 
 ### **Conda Environment Setup**
 
@@ -63,12 +62,19 @@ conda create -n sistr sistr -c bioconda -c conda-forge -y
 ### Pre-Execution Configuration
 
 This pipeline is currently designed to process **Illumina NextSeq sequencing output**.\
-The input files (raw reads) are expected to have a specific appendix to the sample name:
+The input files (raw reads) are expected to have a specific appendix to the sample name and are expected to be in organism specific directories:
 ```
-samplename_R1_001.fastq.gz
-samplename_R2_001.fastq.gz
+input_dir/
+│── Name_of_organism1/
+│   ├── samplename_1_R1_001.fastq.gz
+│   ├── samplename_1_R2_001.fastq.gz  
+├── Name_of_organism2/
+│   ├── samplename_2_R1_001.fastq.gz
+│   ├── samplename_2_R2_001.fastq.gz
 ```
-NOTE: If your files follow a different naming scheme, you can adjust the pipeline to match the unique format. However, be **extremely careful** to modify **all occurences** of the file naming pattern throughout the script to avoid errors.
+
+> [!NOTE]  
+> If your files follow a different naming scheme, you can adjust the pipeline to match the unique format. However, be **extremely careful** to modify **all occurences** of the file naming pattern throughout the script to avoid errors.
 
 
 #### 1. Prepare the sample sheet
@@ -84,36 +90,50 @@ Sample name         Sample notes
 
 #### 2. Update paths in the script
 Before executing the pipeline, the user **must edit** the **.sh script** to update variables with paths specific to your environment:
-- **conda_envs='~/mambaforge/envs'**
-<br > *path to all conda environments*
-- **raw_reads_dir='path/to/fastq/dir'**
-<br > *--> inside the fastq dir, the .fastq files are in subfolders:*
-```
-raw_reads_dir/
-│── Name_of_organism1/
-│   ├── raw_reads1.fastq
-│   ├── raw_reads2.fastq  
-├── Name_of_organism2/
-│   ├── raw_reads3.fastq
-│   ├── raw_reads4.fastq
-...
+
+- **Conda Environments Directory**
+```bash
+conda_envs='~/mambaforge/envs'
 ```
 
-- **output_dir='path/to/desired/output/dir'**
-<br > *--> Set the location where all pipeline results will be saved.*
-- **run_name='user_defined_run_name'**
-- **samplesheet='path/to/samplesheet.tsv'**
-- **trimmomatic_q_score="4:20"**
-<br > *- (default) 4:20 = average quality score of 4 bases above q20 (99% accuracy)
-<br > - 4:30 = average q score of 4 bases above q30 (99,9% accuracy)
-<br > - 1:20 = each base q20 (99% accuracy)
-<br > - 1:30 = each base q30 (99,9% accuracy)*
-<br > - ...
-- **ref_genomes_dir="location/of/reference/genomes/for/QUAST"**
-<br > *--> During execution, the script will **prompt the user in CLI** to enter reference genome path.
-<br > --> Since the path to the directory with ref genomes is specified here, the user only needs to enter the name of the ref genome in the CLI and the script will automatically append the ful path and continue*
-- **kmerfinder_db='location/of/kmerfinder/databases/bacteria/*bacteria.ATG*'**
-- **kmerfinder_tax='location/of/kmerfinder/databases/bacteria/*bacteria.tax*'**
+- **Input Files Directory (.fastq)**
+```bash
+raw_reads_dir='path/to/fastq/dir'
+```
+
+- **Pipeline Results Directory**
+```bash
+output_dir='path/to/desired/output/dir'
+```
+
+- **Run Name**
+```bash
+run_name='user_defined_run_name'
+```
+
+- **Trimming Quality Score**
+```bash
+trimmomatic_q_score="4:20"
+```
+> (default) 4:20 = average quality score of 4 bases above q20 [ 99% accuracy ]
+<br > - 4:30 = average q score of 4 bases above q30 [ 99,9% accuracy ]
+<br > - 1:20 = each base q20 [ 99% accuracy ]
+<br > - 1:30 = each base q30 [ 99,9% accuracy ]
+<br > ...
+
+- **Reference Genomes Directory**
+```bash
+ref_genomes_dir="location/of/reference/genomes/for/QUAST"
+```
+> [!NOTE]  
+> During execution, the script will **prompt the user in CLI** to enter reference genome path.  
+> Since the path to the directory with ref genomes is specified here, the user only needs to enter the name of the ref genome in the CLI and the script will automatically append the ful path and continue.
+
+- **KmerFinder Database Directory**
+```bash
+kmerfinder_db='location/of/kmerfinder/databases/bacteria/*bacteria.ATG*'
+kmerfinder_tax='location/of/kmerfinder/databases/bacteria/*bacteria.tax*'
+```
 
 After saving the **.sh script**, the pipeline can be executed.
 
@@ -149,7 +169,7 @@ bash illumina_processing_raw_pipeline_linux.sh <step1 step2 step3 ...>
 The pipeline generates the following directory structure:
 
 ```
-output_dir/
+/output_dir/
 │── 01_QC_reads/
 │   ├── 01_raw_QC/
 │       ├── 01_fastQC/
