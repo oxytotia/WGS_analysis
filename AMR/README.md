@@ -58,17 +58,21 @@ Before executing the pipeline, the user **must edit** the **.sh script** to upda
 ```bash
 conda_envs='~/mambaforge/envs'
 ```
-- **Input Files Directory (.fastq)**
+
+- **Input Files Directory (.fasta)**
 ```bash
-raw_reads_dir='path/to/fastq/dir'
+input_dir='path/to/assembly/dir'
 ```
 
-- **input_dir='path/to/assembly/dir'**
-<br > *--> inside the input dir, the .fasta files are in subfolders:*
+- **Pipeline Results Directory**
+```bash
+output_dir='path/to/desired/output/dir'
+```
 
-- **output_dir='path/to/desired/output/dir'**
-<br > *--> Set the location where all pipeline results will be saved.*
-- **run_name='user_defined_run_name'**
+- **Run Name**
+```bash
+run_name='user_defined_run_name'
+```
 
 After saving the **.sh script**, the pipeline can be executed.
 
