@@ -24,8 +24,6 @@ A comprehensive Whole Genome Sequencing (WGS) pipeline for processing Illumina s
 To run this pipeline, you need:
 - **Linux OS** (`Ubuntu` or `HPC cluster`)
 - **Conda** (for managing dependencies)
-- **Python 3** (for report merging)
-
 - **Required tools installed in Conda environments:**
   - `FastQC`, `MultiQC`
   - `Trimmomatic`
@@ -36,6 +34,9 @@ To run this pipeline, you need:
   - `Minimap2`, `Samtools`
   - `MLST`
   - `SISTR`
+- **Python 3** (for report merging)
+  - make sure that `openpyxl` module is installed 
+
 
 ### **Conda Environment Setup**
 
