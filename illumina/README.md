@@ -87,9 +87,18 @@ Before executing the pipeline, the user **must edit** the **.sh script** to upda
 - **conda_envs='~/mambaforge/envs'**
 <br > *path to all conda environments*
 - **raw_reads_dir='path/to/fastq/dir'**
-<br > *--> inside the fastq dir, the .fastq files are in subfolders: 
-<br > fastq_dir/Salmonella_enterica/raw_reads.fastq 
-<br > fastq_dir/Campylobacter_jejuni/raw_reads.fastq*
+<br > *--> inside the fastq dir, the .fastq files are in subfolders:*
+```
+raw_reads_dir/
+│── Name_of_organism1/
+│   ├── raw_reads1.fastq
+│   ├── raw_reads2.fastq  
+├── Name_of_organism2/
+│   ├── raw_reads3.fastq
+│   ├── raw_reads4.fastq
+...
+```
+
 - **output_dir='path/to/desired/output/dir'**
 <br > *--> Set the location where all pipeline results will be saved.*
 - **run_name='user_defined_run_name'**
@@ -99,6 +108,7 @@ Before executing the pipeline, the user **must edit** the **.sh script** to upda
 <br > - 4:30 = average q score of 4 bases above q30 (99,9% accuracy)
 <br > - 1:20 = each base q20 (99% accuracy)
 <br > - 1:30 = each base q30 (99,9% accuracy)*
+<br > - ...
 - **ref_genomes_dir="location/of/reference/genomes/for/QUAST"**
 <br > *--> During execution, the script will **prompt the user in CLI** to enter reference genome path.
 <br > --> Since the path to the directory with ref genomes is specified here, the user only needs to enter the name of the ref genome in the CLI and the script will automatically append the ful path and continue*
@@ -139,7 +149,7 @@ bash illumina_processing_raw_pipeline_linux.sh <step1 step2 step3 ...>
 The pipeline generates the following directory structure:
 
 ```
-/output_dir/
+output_dir/
 │── 01_QC_reads/
 │   ├── 01_raw_QC/
 │       ├── 01_fastQC/
