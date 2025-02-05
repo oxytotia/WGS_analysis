@@ -149,7 +149,7 @@ bash illumina_processing_raw_pipeline_linux.sh <step1 step2 step3 ...>
 
 #### **Available Steps**:
 
-| step | Description |
+| Step | Description |
 |------|-------------|
 | qc_raw | Quality control of raw reads (FastQC, MultiQC) |
 | trim | Read trimming (Trimmomatic) |

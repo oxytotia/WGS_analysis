@@ -88,7 +88,7 @@ bash AntiMicrobialResistance.sh <step1 step2 ...>
 
 #### **Available Steps**:
 
-| step | Description |
+| Step | Description |
 |------|-------------|
 | amrfinder | AMR genes detection |
 | resfinder | AMR genes detection |
