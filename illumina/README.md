@@ -62,7 +62,7 @@ conda create -n sistr sistr -c bioconda -c conda-forge -y
 ### Pre-Execution Configuration
 
 This pipeline is currently designed to process **Illumina NextSeq sequencing output**.\
-The input files (raw reads) are expected to have a specific appendix to the sample name and are expected to be in organism specific directories:
+The input files (**raw reads**) are expected to be **organized into organism-specific folders** within the input directory and to have **a specific appendix** to the sample name:
 ```
 input_dir/
 │── Name_of_organism1/

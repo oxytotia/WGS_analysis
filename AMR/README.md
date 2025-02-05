@@ -39,12 +39,7 @@ conda create -n rgi rgi -c bioconda -c conda-forge -y
 
 ### Pre-Execution Configuration
 
-#### 1. Update paths in the script
-Before executing the pipeline, the user **must edit** the **.sh script** to update variables with paths specific to your environment:
-- **conda_envs='~/mambaforge/envs'**
-<br > *path to all conda environments*
-- **input_dir='path/to/assembly/dir'**
-<br > *--> inside the input dir, the .fasta files are in subfolders:*
+The input files (assemblies) are expected to be in the organism specific directories:
 ```
 input_dir/
 │── Name_of_organism1/
@@ -55,6 +50,22 @@ input_dir/
 │   ├── assembly4.fasta
 ...
 ```
+
+#### 1. Update paths in the script
+Before executing the pipeline, the user **must edit** the **.sh script** to update variables with paths specific to your environment:
+
+- **Conda Environments Directory**
+```bash
+conda_envs='~/mambaforge/envs'
+```
+- **Input Files Directory (.fastq)**
+```bash
+raw_reads_dir='path/to/fastq/dir'
+```
+
+- **input_dir='path/to/assembly/dir'**
+<br > *--> inside the input dir, the .fasta files are in subfolders:*
+
 - **output_dir='path/to/desired/output/dir'**
 <br > *--> Set the location where all pipeline results will be saved.*
 - **run_name='user_defined_run_name'**
