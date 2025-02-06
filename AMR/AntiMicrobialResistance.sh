@@ -53,21 +53,19 @@ amrfinderplus_fun() {
 
 
 	for organism in $input_dir/*/; do
-
 		organism_name=$(basename $organism)
-			
+
+		echo -e "\nStarting AMRFinder."	
 		log_start_time "Starting AMRfinder for organism: $organism_name"
 		
 		mkdir -p $output_dir/01_amrfinderplus/$organism_name
-
-		echo -e "\nStarting AMRfinder for organism: $organism_name\nPlease type:\n "-l" \n+ press Enter and choose the correct name for: $organism_name from the list.\n"
-		read userinput1 
-			
-		amrfinder $userinput1	
-	
-		echo -e "\nPlease copy and paste the name of the chosen organism:\n"
+				
+		amrfinder -l	
+		echo -e "\nPlease choose the correct scheme from the list of organisms for: $organism_name\n"
+		
 		read organism_name_amrfinder 
-		log_start_time "User entered: $organismname as the name of the organism."
+		
+		log_start_time "User entered: $organism_name_amrfinder as the name of the organism."
 	
 		for assembly in $organism/*.fasta; do
 			assembly_name=$(basename $assembly .fasta) 
@@ -76,8 +74,8 @@ amrfinderplus_fun() {
 
 		done
 		
-	echo -e "\nProcess finished for $organismname"		
-	log_start_time "Process finished for: $organismname"
+	echo -e "\nProcess finished for $organism_name"		
+	log_start_time "Process finished for: $organism_name"
 
 	done
 	
@@ -113,8 +111,8 @@ resfinder_fun() {
 		
 		done
 		
-		echo -e "\nProcess finished for $organismname"
-		log_start_time "Process finished for $organismname"
+		echo -e "\nProcess finished for $organism_name"
+		log_start_time "Process finished for $organism_name"
 	
 	done
 	
@@ -144,8 +142,8 @@ rgi_fun() {
 	
 		done
 		
-		echo -e "\nProcess finished for $organismname"
-		log_start_time "Process finished for $organismname"			
+		echo -e "\nProcess finished for $organism_name"
+		log_start_time "Process finished for $organism_name"			
 
 	done
 
