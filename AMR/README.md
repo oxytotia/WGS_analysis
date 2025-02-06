@@ -24,7 +24,7 @@ To run this pipeline, you need:
 
 To install required environments:
 
-> [!NOTE]  
+> [!IMPORTANT]  
 > The env names listed below are directly referenced in the script - if the env names differ, the user must alter the script accordingly.
 
 ```bash
