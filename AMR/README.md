@@ -81,7 +81,7 @@ After saving the **.sh script**, the pipeline can be executed.
 
 ### Execution
 
-> [!IMPORTANT]  
+> [!NOTE]  
 > During execution, the script will **prompt the user in CLI** to enter organism name from available schemes in AMRFinderPlus and ResFinder (RGI doesn't require the selection of a specific organism scheme).  
 
 #### 1. Run Entire Pipeline:
