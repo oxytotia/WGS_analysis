@@ -128,7 +128,7 @@ trimmomatic_q_score="4:20"
 ```bash
 ref_genomes_dir="location/of/reference/genomes/for/QUAST"
 ```
-> [!NOTE]  
+> [!IMPORTANT]  
 > During execution, the script will **prompt the user in CLI** to enter reference genome path.  
 > Since the path to the directory with ref genomes is specified here, the user only needs to enter the name of the ref genome in the CLI and the script will automatically append the ful path and continue.
 

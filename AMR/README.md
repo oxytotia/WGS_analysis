@@ -80,6 +80,10 @@ run_name='user_defined_run_name'
 After saving the **.sh script**, the pipeline can be executed.
 
 ### Execution
+
+> [!IMPORTANT]  
+> During execution, the script will **prompt the user in CLI** to enter organism name from available schemes in AMRFinderPlus and ResFinder (RGI doesn't require the selection of a specific organism scheme).  
+
 #### 1. Run Entire Pipeline:
 ```bash
 bash AntiMicrobialResistance.sh all
