@@ -47,10 +47,9 @@ amrfinderplus_fun() {
 
 	conda activate $conda_envs/amrfinderplus
 
-	log_start_time "	STARTING AMRfinderplus version:"
-	amrfinder --database_version >> $output_dir/${run_name}_analysis_pipeline_report.log
-	# or -V: Print out complete version information of both the database and software.
-
+	amrfinder_version=$(amrfinder -V | sed -n '2p;4p')
+		# output: Software version: 3.11.14 Database version: 2023-11-15.1
+	log_start_time "	STARTING AMRfinderplus: $amrfinder_version"
 
 	for organism in $input_dir/*/; do
 		organism_name=$(basename $organism)
@@ -90,8 +89,8 @@ resfinder_fun() {
 	echo -e "\nStarting ResFinder.\n"
 
 	conda activate $conda_envs/resfinder
-	log_start_time "	STARTING ResFinder version:"
-	run_resfinder.py --version >> $output_dir/${run_name}_analysis_pipeline_report.log
+	resfinder_version=$(run_resfinder.py --version)
+	log_start_time "	STARTING ResFinder v$resfinder_version"
 	
 		
 	for organism in $input_dir/*/; do
@@ -126,8 +125,8 @@ rgi_fun() {
 	echo -e "\nStarting rgi.\n"
 
 	conda activate $conda_envs/rgi
-	log_start_time "	STARTING RGI version:"
-	rgi main -v >> $output_dir/${run_name}_analysis_pipeline_report.log
+	rgi_verison=$(rgi main -v)
+	log_start_time "	STARTING RGI v$rgi_verison"
 	
 		
 	for organism in $input_dir/*/; do
