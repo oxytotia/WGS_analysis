@@ -993,7 +993,7 @@ def init_data_structure():
 def match_sample_name(report_names, orig_name):
     for report_name in report_names:
         if report_name.startswith(orig_name):
-            remaining_string = report_name[len(orig_name)]
+            remaining_string = report_name[len(orig_name):]
             if not remaining_string or remaining_string[0] in "_":		# if there isn't a remaining string in report name OR 
             									# if the remaining string starts with _ (illumina has _S000 after each sample)
                 return orig_name, report_name, "match"
